@@ -1,4 +1,10 @@
 var X = Object.defineProperty;
+window.__TAURI__ = {
+    invoke: (...args) => {
+        console.warn("Tauri invoke called with", args);
+        return Promise.resolve(); // mock async result
+    }
+};
 
 var O = (x, t, e) => t in x ? X(x, t, {
     enumerable: !0,
@@ -526,7 +532,7 @@ const R = function() {
     }
 });
 ot();
-const {invoke: T} = __TAURI__[c(696)];
+const { invoke: T } = __TAURI__.invoke;
 (function() {
     const x = c;
     let t;
